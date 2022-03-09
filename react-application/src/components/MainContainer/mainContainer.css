@@ -34,3 +34,17 @@
 .drag-drop-msg {
   color: var(--dark-grayish-blue);
 }
+
+.completed-circle {
+  border: 2px solid var(--very-light-grayish-blue);
+}
+
+.items-container__create,
+.items-container__list,
+.items-container__create-content > input {
+  background-color: var(--very-light-gray);
+}
+
+.items-container__create-content > input {
+  color: var(--very-dark-grayish-blue);
+}
