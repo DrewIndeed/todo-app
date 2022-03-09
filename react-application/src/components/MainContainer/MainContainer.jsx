@@ -1,9 +1,15 @@
 import React from 'react';
 import './mainContainer.css'
+import {Images} from '../../assets/index'
 const MainContainer = () => {
   return <div className ="main-container">
       <div className="card-container">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. In perspiciatis distinctio molestias. Consequatur ipsa, placeat libero, quisquam ea obcaecati vel ratione itaque, qui fugit perferendis?
+          <div className="card-image">
+            <h2>TODO</h2>
+            <div className="image">
+              <img src={Images.sunIcon} alt="A sun icon" />
+              </div>
+          </div>
         </div>
     </div>;
 };

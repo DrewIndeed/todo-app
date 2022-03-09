@@ -10,6 +10,23 @@
 }
 
 .card-container{
+    width: 40%;
     max-width: 40%;
-    background-color: yellow;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 3.5em 0 2em 0;
+}
+
+.card-image h2{
+    font-size:2rem;
+    letter-spacing: 1rem;
+    color:var(--very-light-gray);
+    font-weight: bold;
 }
