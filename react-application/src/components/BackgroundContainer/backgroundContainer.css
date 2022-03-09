@@ -1,3 +1,7 @@
 .top-background {
   min-height: 35vh;
 }
+
+.bot-background {
+  background-color: var(--very-light-gray);;
+}

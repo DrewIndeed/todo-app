@@ -33,12 +33,12 @@ const MainContainer = () => {
           </div>
 
           {/* items list */}
-          <div className="items-container__list w-full flex flex-1 rounded-md"></div>
+          <div className="items-container__list shadow-lg w-full flex flex-1 rounded-md"></div>
         </div>
 
         {/* drag and drop msg */}
         <div className="bg-transparent flex items-center justify-center py-12">
-          <h3 className="drag-drop-msg text-xs font-bold">
+          <h3 className="drag-drop-msg text-xs font-bold opacity-50">
             Drag and drop to reorder list
           </h3>
         </div>
