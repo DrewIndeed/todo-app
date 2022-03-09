@@ -1,7 +1,15 @@
-import React from 'react';
-import './mainContainer.css';
-import { Images } from '../../assets/index';
+import React from "react";
+import "./mainContainer.css";
+import { Images } from "../../assets/index";
 const MainContainer = () => {
+  const temp1 = (
+    <div className="task flex items-center">
+      <div className="w-16 h-14 flex items-center justify-center">
+        <div className="completed-circle rounded-full w-6 h-6 cursor-pointer"></div>
+      </div>
+      <h3>Learning React </h3>
+    </div>
+  );
   return (
     <div className="main-container">
       <div className="card-container">
@@ -33,7 +41,32 @@ const MainContainer = () => {
           </div>
 
           {/* items list */}
-          <div className="items-container__list shadow-lg w-full flex flex-1 rounded-md"></div>
+          <div className="items-container__list shadow-lg w-full flex flex-col justify-between flex-1 rounded-md overflow-hidden">
+            <div className="list-container flex flex-col  overflow-scroll">
+             {temp1}
+             {temp1}
+             {temp1}
+             {temp1}
+             {temp1}
+             {temp1}
+             {temp1}
+             {temp1}
+             {temp1}
+             {temp1}
+             {temp1}
+             {temp1}
+            </div>
+            <div className="list-control">
+              <h3>5 items left</h3>
+              <div className="list-control-status">
+                <button>All</button>
+                <button>Active</button>
+                <button>Completed</button>
+              </div>
+
+              <button>Clear completed</button>
+            </div>
+          </div>
         </div>
 
         {/* drag and drop msg */}
