@@ -8,8 +8,8 @@ const BackgroundContainer = () => {
       <div
         style={{ backgroundImage: `url(${Images.desktopDark})` }}
         className="top-background"
-      ></div>
-      <div className="bot-background flex-1"></div>
+      />
+      <div className="bot-background flex-1" />
     </div>
   );
 };
