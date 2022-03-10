@@ -1,7 +1,10 @@
 .top-background {
   min-height: 35vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .bot-background {
-  background-color: var(--very-light-gray);;
+  background-color: var(--very-light-gray);
 }

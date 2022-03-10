@@ -1,15 +1,16 @@
-import React from "react";
-import "./mainContainer.css";
-import { Images } from "../../assets/index";
+import React from 'react';
+import './mainContainer.css';
+import { Images } from '../../assets/index';
 const MainContainer = () => {
   const temp1 = (
     <div className="task flex items-center">
-      <div className="w-16 h-14 flex items-center justify-center">
+      <div className="task-check-circle w-16 flex items-center justify-center">
         <div className="completed-circle rounded-full w-6 h-6 cursor-pointer"></div>
       </div>
-      <h3>Learning React </h3>
+      <h3>Learning React</h3>
     </div>
   );
+
   return (
     <div className="main-container">
       <div className="card-container">
@@ -22,12 +23,12 @@ const MainContainer = () => {
         </div>
 
         {/* new item input and items list */}
-        <div className="items-container flex flex-col items-center space-y-6 flex-1">
+        <div className="items-container flex flex-col items-center space-y-7 flex-1">
           {/* input to create */}
           <div className="items-container__create w-full flex rounded-md overflow-hidden">
             {/* complete circle container */}
-            <div className="w-16 h-14 flex items-center justify-center">
-              <div className="completed-circle rounded-full w-6 h-6 cursor-pointer"></div>
+            <div className="completed-circle-container w-16 h-16 flex items-center justify-center">
+              <div className="completed-circle w-6 h-6 cursor-pointer rounded-full"></div>
             </div>
 
             {/* input for new task */}
@@ -42,19 +43,31 @@ const MainContainer = () => {
 
           {/* items list */}
           <div className="items-container__list shadow-lg w-full flex flex-col justify-between flex-1 rounded-md overflow-hidden">
-            <div className="list-container flex flex-col  overflow-scroll">
-             {temp1}
-             {temp1}
-             {temp1}
-             {temp1}
-             {temp1}
-             {temp1}
-             {temp1}
-             {temp1}
-             {temp1}
-             {temp1}
-             {temp1}
-             {temp1}
+            <div className="list-container flex flex-col overflow-scroll">
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
+              {temp1}
             </div>
             <div className="list-control">
               <h3>5 items left</h3>
@@ -70,7 +83,7 @@ const MainContainer = () => {
         </div>
 
         {/* drag and drop msg */}
-        <div className="bg-transparent flex items-center justify-center py-12">
+        <div className="bg-transparent flex items-center justify-center py-11">
           <h3 className="drag-drop-msg text-xs font-bold opacity-50">
             Drag and drop to reorder list
           </h3>

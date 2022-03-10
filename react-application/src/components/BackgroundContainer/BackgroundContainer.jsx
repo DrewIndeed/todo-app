@@ -6,7 +6,9 @@ const BackgroundContainer = () => {
   return (
     <div className="w-full h-screen flex flex-col">
       <div
-        style={{ backgroundImage: `url(${Images.desktopLight})` }}
+        style={{
+          backgroundImage: `url(${Images.desktopLight})`,
+        }}
         className="top-background"
       />
       <div className="bot-background flex-1" />
