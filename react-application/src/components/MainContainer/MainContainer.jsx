@@ -58,7 +58,11 @@ const MainContainer = ({ setIsThemeChanged }) => {
 
   const handleEnter = (event) => {
     if (event.keyCode === 13) {
-      if (event.target.value.length <= 40) {
+      if (
+        !/\s+/.test(event.target.value) &&
+        event.target.value.length <= 40 &&
+        event.target.value.length > 0
+      ) {
         // Cancel the default action, if needed
         event.preventDefault();
         setTaskList([
@@ -70,7 +74,7 @@ const MainContainer = ({ setIsThemeChanged }) => {
         ]);
         event.target.value = '';
       } else {
-        alert('Task content is too long (40 characters only)');
+        alert('Task content is too long (> 40 characters) or invalid');
       }
     }
   };
