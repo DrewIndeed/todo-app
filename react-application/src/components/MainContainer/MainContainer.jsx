@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './mainContainer.css';
 import { Images } from '../../assets/index';
-const MainContainer = () => {
+
+const MainContainer = ({ setIsThemeChanged }) => {
   const [taskList, setTaskList] = useState([]);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -81,7 +82,10 @@ const MainContainer = () => {
         <div className="card-image">
           <h2>TODO</h2>
           <div
-            onClick={() => setIsDarkTheme(!isDarkTheme)}
+            onClick={() => {
+              setIsDarkTheme(!isDarkTheme);
+              setIsThemeChanged(!isDarkTheme);
+            }}
             className="image cursor-pointer"
           >
             <img
