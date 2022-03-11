@@ -3,6 +3,10 @@ import './mainContainer.css';
 import { Images } from '../../assets/index';
 const MainContainer = () => {
   const [taskList, setTaskList] = useState([]);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const lightBgStyle = 'var(--very-light-gray)';
+  const darkBgStyle = 'var(--very-dark-grayish-blue)';
 
   const Task = ({ content, taskIdx }) => (
     <div className="task cursor-pointer flex items-center justify-between">
@@ -79,7 +83,10 @@ const MainContainer = () => {
         {/* new item input and items list */}
         <div className="items-container flex flex-col items-center space-y-7 flex-1">
           {/* input to create */}
-          <div className="items-container__create w-full flex rounded-md overflow-hidden">
+          <div
+            style={{ backgroundColor: 'var(--very-light-gray)' }}
+            className="items-container__create w-full flex rounded-md overflow-hidden"
+          >
             {/* complete circle container */}
             <div className="completed-circle-container w-16 h-16 flex items-center justify-center">
               <div className="completed-circle-no-anim w-6 h-6 rounded-full"></div>
@@ -88,6 +95,7 @@ const MainContainer = () => {
             {/* input for new task */}
             <div className="items-container__create-content flex-1">
               <input
+                style={{ backgroundColor: 'var(--very-light-gray)' }}
                 onKeyUp={(e) => handleEnter(e)}
                 className="w-full h-full outline-none pr-5"
                 placeholder="What's on your mind?"
@@ -97,7 +105,10 @@ const MainContainer = () => {
           </div>
 
           {/* items list */}
-          <div className="items-container__list shadow-lg w-full flex flex-col justify-between flex-1 rounded-md overflow-hidden">
+          <div
+            style={{ backgroundColor: 'var(--very-light-gray)' }}
+            className="items-container__list shadow-lg w-full flex flex-col justify-between flex-1 rounded-md overflow-hidden"
+          >
             <div className="list-container flex flex-col overflow-scroll">
               {taskList.map((task, idx) => (
                 <Task

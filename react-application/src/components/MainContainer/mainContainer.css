@@ -64,12 +64,6 @@
   border: 2px solid transparent;
 }
 
-.items-container__create,
-.items-container__list,
-.items-container__create-content > input {
-  background-color: var(--very-light-gray);
-}
-
 .items-container__create-content > input {
   color: var(--very-dark-grayish-blue);
 }
@@ -128,5 +122,5 @@
 
 .strike {
   text-decoration: line-through;
-  color: var(--light-grayish-blue);
+  color: var(--light-grayish-blue)
 }
