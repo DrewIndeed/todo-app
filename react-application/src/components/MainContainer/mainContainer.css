@@ -45,6 +45,10 @@
   border: 2px solid var(--very-light-grayish-blue);
 }
 
+.completed-circle-no-anim {
+  border: 2px solid var(--very-light-grayish-blue);
+}
+
 .completed-circle:hover {
   background: linear-gradient(var(--very-light-gray), var(--very-light-gray))
       padding-box,
@@ -85,6 +89,25 @@
 .task {
   border-bottom: 0.5px solid var(--light-grayish-blue);
   color: var(--very-dark-grayish-blue);
+}
+
+.task-content-container {
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow-x: hidden;
+}
+
+.task-content {
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow-x: hidden;
+}
+
+.task-content-container:hover .delete-task-cross,
+.task:hover .delete-task-cross {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .list-control-status {

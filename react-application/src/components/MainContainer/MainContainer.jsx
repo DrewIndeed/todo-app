@@ -1,15 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './mainContainer.css';
 import { Images } from '../../assets/index';
 const MainContainer = () => {
-  const temp1 = (
-    <div className="task flex items-center">
-      <div className="task-check-circle w-16 flex items-center justify-center">
-        <div className="completed-circle rounded-full w-6 h-6 cursor-pointer"></div>
+  const [taskList, setTaskList] = useState([]);
+
+  const Task = ({ content, taskIdx }) => (
+    <div className="task cursor-pointer flex items-center justify-between">
+      <div className="task-content-container flex items-center">
+        <div className="task-check-circle w-16 flex items-center justify-center">
+          <div className="completed-circle rounded-full w-6 h-6 cursor-pointer"></div>
+        </div>
+
+        <div className="flex items-center h-full task-content">
+          <h3>{content}</h3>
+        </div>
       </div>
-      <h3>Learning React</h3>
+
+      <div
+        onClick={() => {
+          let tempCurList = [...taskList];
+          tempCurList.splice(taskIdx, 1);
+          setTaskList(tempCurList);
+        }}
+        className="delete-task-cross px-5 cursor-pointer hidden"
+      >
+        <img src={Images.crossIcon} alt="delete cross task" />
+      </div>
     </div>
   );
+
+  const handleEnter = (event) => {
+    if (event.keyCode === 13) {
+      if (event.target.value.length <= 40) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        setTaskList([...taskList, event.target.value]);
+        event.target.value = '';
+      } else {
+        alert('Task content is too long (40 characters only)');
+      }
+    }
+  };
 
   return (
     <div className="main-container">
@@ -28,13 +59,14 @@ const MainContainer = () => {
           <div className="items-container__create w-full flex rounded-md overflow-hidden">
             {/* complete circle container */}
             <div className="completed-circle-container w-16 h-16 flex items-center justify-center">
-              <div className="completed-circle w-6 h-6 cursor-pointer rounded-full"></div>
+              <div className="completed-circle-no-anim w-6 h-6 rounded-full"></div>
             </div>
 
             {/* input for new task */}
             <div className="items-container__create-content flex-1">
               <input
-                className="w-full h-full outline-none"
+                onKeyUp={(e) => handleEnter(e)}
+                className="w-full h-full outline-none pr-5"
                 placeholder="What's on your mind?"
                 type="text"
               />
@@ -44,33 +76,13 @@ const MainContainer = () => {
           {/* items list */}
           <div className="items-container__list shadow-lg w-full flex flex-col justify-between flex-1 rounded-md overflow-hidden">
             <div className="list-container flex flex-col overflow-scroll">
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
-              {temp1}
+              {taskList?.map((task, idx) => (
+                <Task key={task} taskIdx={idx} content={task} />
+              ))}
             </div>
+
             <div className="list-control">
-              <h3>5 items left</h3>
+              <h3>{taskList?.length} items left</h3>
               <div className="list-control-status">
                 <button>All</button>
                 <button>Active</button>
