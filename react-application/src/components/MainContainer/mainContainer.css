@@ -39,14 +39,21 @@
 .drag-drop-msg {
   color: var(--dark-grayish-blue);
 }
+.completed-circle-no-anim {
+  border: 2px solid var(--very-light-grayish-blue);
+}
 
 .completed-circle {
   transition: all 0.4s;
   border: 2px solid var(--very-light-grayish-blue);
 }
 
-.completed-circle-no-anim {
-  border: 2px solid var(--very-light-grayish-blue);
+.completed-circle__done {
+  background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
+      padding-box,
+    linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+  border-radius: 50%;
+  border: 2px solid transparent;
 }
 
 .completed-circle:hover {
@@ -117,4 +124,9 @@
 
 .task-check-circle {
   height: 3.61rem;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: var(--light-grayish-blue);
 }

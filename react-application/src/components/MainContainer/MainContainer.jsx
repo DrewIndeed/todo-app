@@ -8,11 +8,28 @@ const MainContainer = () => {
     <div className="task cursor-pointer flex items-center justify-between">
       <div className="task-content-container flex items-center">
         <div className="task-check-circle w-16 flex items-center justify-center">
-          <div className="completed-circle rounded-full w-6 h-6 cursor-pointer"></div>
+          <div
+            onClick={() => {
+              let tempTargetList = [...taskList];
+              tempTargetList[taskIdx].done = true;
+              setTaskList(tempTargetList);
+            }}
+            className={`${
+              taskList[taskIdx].done
+                ? 'completed-circle__done flex items-center justify-center'
+                : 'completed-circle'
+            } rounded-full w-6 h-6 cursor-pointer`}
+          >
+            <img
+              className={`w-3 h-3 ${!taskList[taskIdx].done && 'hidden'}`}
+              src={Images.checkIcon}
+              alt=""
+            />
+          </div>
         </div>
 
         <div className="flex items-center h-full task-content">
-          <h3>{content}</h3>
+          <h3 className={`${taskList[taskIdx].done && 'strike'}`}>{content}</h3>
         </div>
       </div>
 
@@ -34,7 +51,13 @@ const MainContainer = () => {
       if (event.target.value.length <= 40) {
         // Cancel the default action, if needed
         event.preventDefault();
-        setTaskList([...taskList, event.target.value]);
+        setTaskList([
+          ...taskList,
+          {
+            content: event.target.value,
+            done: false,
+          },
+        ]);
         event.target.value = '';
       } else {
         alert('Task content is too long (40 characters only)');
@@ -76,13 +99,19 @@ const MainContainer = () => {
           {/* items list */}
           <div className="items-container__list shadow-lg w-full flex flex-col justify-between flex-1 rounded-md overflow-hidden">
             <div className="list-container flex flex-col overflow-scroll">
-              {taskList?.map((task, idx) => (
-                <Task key={task} taskIdx={idx} content={task} />
+              {taskList.map((task, idx) => (
+                <Task
+                  key={task.content + idx}
+                  taskIdx={idx}
+                  content={task.content}
+                />
               ))}
             </div>
 
             <div className="list-control">
-              <h3>{taskList?.length} items left</h3>
+              <h3>
+                {taskList.filter((task) => !task.done)?.length} items left
+              </h3>
               <div className="list-control-status">
                 <button>All</button>
                 <button>Active</button>
