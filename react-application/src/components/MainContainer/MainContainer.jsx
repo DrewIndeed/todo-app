@@ -9,7 +9,12 @@ const MainContainer = () => {
   const darkBgStyle = 'var(--very-dark-grayish-blue)';
 
   const Task = ({ content, taskIdx }) => (
-    <div className="task cursor-pointer flex items-center justify-between">
+    <div
+      style={{
+        color: isDarkTheme ? lightBgStyle : darkBgStyle,
+      }}
+      className="task cursor-pointer flex items-center justify-between"
+    >
       <div className="task-content-container flex items-center">
         <div className="task-check-circle w-16 flex items-center justify-center">
           <div
@@ -75,8 +80,14 @@ const MainContainer = () => {
         {/* main title */}
         <div className="card-image">
           <h2>TODO</h2>
-          <div className="image cursor-pointer">
-            <img src={Images.sunIcon} alt="A sun icon" />
+          <div
+            onClick={() => setIsDarkTheme(!isDarkTheme)}
+            className="image cursor-pointer"
+          >
+            <img
+              src={isDarkTheme ? Images.sunIcon : Images.moonIcon}
+              alt="A sun icon"
+            />
           </div>
         </div>
 
@@ -84,7 +95,9 @@ const MainContainer = () => {
         <div className="items-container flex flex-col items-center space-y-7 flex-1">
           {/* input to create */}
           <div
-            style={{ backgroundColor: 'var(--very-light-gray)' }}
+            style={{
+              backgroundColor: isDarkTheme ? darkBgStyle : lightBgStyle,
+            }}
             className="items-container__create w-full flex rounded-md overflow-hidden"
           >
             {/* complete circle container */}
@@ -95,7 +108,10 @@ const MainContainer = () => {
             {/* input for new task */}
             <div className="items-container__create-content flex-1">
               <input
-                style={{ backgroundColor: 'var(--very-light-gray)' }}
+                style={{
+                  backgroundColor: isDarkTheme ? darkBgStyle : lightBgStyle,
+                  color: isDarkTheme ? lightBgStyle : darkBgStyle,
+                }}
                 onKeyUp={(e) => handleEnter(e)}
                 className="w-full h-full outline-none pr-5"
                 placeholder="What's on your mind?"
@@ -106,7 +122,9 @@ const MainContainer = () => {
 
           {/* items list */}
           <div
-            style={{ backgroundColor: 'var(--very-light-gray)' }}
+            style={{
+              backgroundColor: isDarkTheme ? darkBgStyle : lightBgStyle,
+            }}
             className="items-container__list shadow-lg w-full flex flex-col justify-between flex-1 rounded-md overflow-hidden"
           >
             <div className="list-container flex flex-col overflow-scroll">
