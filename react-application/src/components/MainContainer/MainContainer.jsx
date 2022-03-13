@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import './mainContainer.css';
-import { Images } from '../../assets/index';
-
+import React, { useState } from "react";
+import "./mainContainer.css";
+import { Images } from "../../assets/index";
+import { motion } from "framer-motion";
 const MainContainer = ({ setIsThemeChanged }) => {
   const [taskList, setTaskList] = useState([]);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  const lightBgStyle = 'var(--very-light-gray)';
-  const darkBgStyle = 'var(--very-dark-grayish-blue)';
+  const lightBgStyle = "var(--very-light-gray)";
+  const darkBgStyle = "var(--very-dark-grayish-blue)";
 
   const Task = ({ content, taskIdx }) => (
-    <div
+    <motion.div
+      initial = {{x:-100}}
+      animate={{ x: 0, transition: { duration: 1 } }}
+      exit = {{x:-100}}
+      whileHover={{ scaleY: 1.2 }}
       style={{
         color: isDarkTheme ? lightBgStyle : darkBgStyle,
       }}
@@ -26,12 +30,12 @@ const MainContainer = ({ setIsThemeChanged }) => {
             }}
             className={`${
               taskList[taskIdx].done
-                ? 'completed-circle__done flex items-center justify-center'
-                : 'completed-circle'
+                ? "completed-circle__done flex items-center justify-center"
+                : "completed-circle"
             } rounded-full w-6 h-6 cursor-pointer`}
           >
             <img
-              className={`w-3 h-3 ${!taskList[taskIdx].done && 'hidden'}`}
+              className={`w-3 h-3 ${!taskList[taskIdx].done && "hidden"}`}
               src={Images.checkIcon}
               alt=""
             />
@@ -39,7 +43,7 @@ const MainContainer = ({ setIsThemeChanged }) => {
         </div>
 
         <div className="flex items-center h-full task-content">
-          <h3 className={`${taskList[taskIdx].done && 'strike'}`}>{content}</h3>
+          <h3 className={`${taskList[taskIdx].done && "strike"}`}>{content}</h3>
         </div>
       </div>
 
@@ -53,7 +57,7 @@ const MainContainer = ({ setIsThemeChanged }) => {
       >
         <img src={Images.crossIcon} alt="delete cross task" />
       </div>
-    </div>
+    </motion.div>
   );
 
   const handleEnter = (event) => {
@@ -72,9 +76,9 @@ const MainContainer = ({ setIsThemeChanged }) => {
             done: false,
           },
         ]);
-        event.target.value = '';
+        event.target.value = "";
       } else {
-        alert('Task content is too long (> 40 characters) or invalid');
+        alert("Task content is too long (> 40 characters) or invalid");
       }
     }
   };
@@ -84,7 +88,12 @@ const MainContainer = ({ setIsThemeChanged }) => {
       <div className="card-container">
         {/* main title */}
         <div className="card-image">
-          <h2>TODO</h2>
+          <motion.h2
+            initial={{ x: -500 }}
+            animate={{ x: 0, transition: { duration: 1 } }}
+          >
+            TODO
+          </motion.h2>
           <div
             onClick={() => {
               setIsDarkTheme(!isDarkTheme);
@@ -92,7 +101,9 @@ const MainContainer = ({ setIsThemeChanged }) => {
             }}
             className="image cursor-pointer"
           >
-            <img
+            <motion.img
+              initial={{ x: 500 }}
+              animate={{ x: 0, transition: { duration: 1 } }}
               src={isDarkTheme ? Images.sunIcon : Images.moonIcon}
               alt="A sun icon"
             />
@@ -100,7 +111,14 @@ const MainContainer = ({ setIsThemeChanged }) => {
         </div>
 
         {/* new item input and items list */}
-        <div className="items-container flex flex-col items-center space-y-7 flex-1">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 1, delay: 2, type: "fade" },
+          }}
+          className="items-container flex flex-col items-center space-y-7 flex-1"
+        >
           {/* input to create */}
           <div
             style={{
@@ -158,14 +176,27 @@ const MainContainer = ({ setIsThemeChanged }) => {
               <button>Clear completed</button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* drag and drop msg */}
-        <div className="bg-transparent flex items-center justify-center py-11">
+        <motion.div
+          initial = {{y:300}}
+          animate={{
+            y: 0,
+            transition: {
+              type: "spring",
+              duration: 3,
+              stiffness:100, 
+              delay:3,
+              damp:20
+            },
+          }}
+          className="bg-transparent flex items-center justify-center py-11"
+        >
           <h3 className="drag-drop-msg text-xs font-bold opacity-50">
             Drag and drop to reorder list
           </h3>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
